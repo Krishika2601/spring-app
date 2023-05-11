@@ -41,8 +41,8 @@ jobs:
 
       - name: Create Elastic Beanstalk Application
         run: |
-          eb init springboot-elasticbeanstalkv2-deploy --platform "corretto-8" --instance_type "t2.micro" --region us-east-1
-          eb create ${{ env.AWS_ELASTIC_BEANSTALK_ENVIRONMENT_NAME }} --single --region ${{ env.AWS_REGION }}
+          eb init springboot-elasticbeanstalkv2-deploy --platform "corretto-8" --region us-east-1
+          eb create springboot-elasticbeanstalkv2-deploy-env --single --instance-type t2.micro --region us-east-1
 
       - name: Deploy to Elastic Beanstalk
         run: |
