@@ -41,7 +41,7 @@ jobs:
 
       - name: Create Elastic Beanstalk Application
         run: |
-          eb init -p "Corretto 8" -i "64bit Amazon Linux 2 v3.4.7" ${{ env.AWS_ELASTIC_BEANSTALK_APPLICATION_NAME }} --region ${{ env.AWS_REGION }}
+         eb init springboot-elasticbeanstalkv2-deploy --platform "Corretto 8" -i "64bit Amazon Linux 2 v3.4.7" --region us-east-1
           eb create ${{ env.AWS_ELASTIC_BEANSTALK_ENVIRONMENT_NAME }} --single --region ${{ env.AWS_REGION }}
 
       - name: Deploy to Elastic Beanstalk
