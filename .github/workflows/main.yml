@@ -5,6 +5,14 @@ on:
     branches:
       - main
 
+env:
+  AWS_REGION: <your AWS region>
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_ELASTIC_BEANSTALK_APPLICATION_NAME: <your Elastic Beanstalk application name>
+  AWS_ELASTIC_BEANSTALK_ENVIRONMENT_NAME: <your Elastic Beanstalk environment name>
+  AWS_ELASTIC_BEANSTALK_S3_BUCKET: <your S3 bucket for storing the app version>
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
