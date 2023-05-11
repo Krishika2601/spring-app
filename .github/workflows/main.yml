@@ -5,14 +5,6 @@ on:
     branches:
       - main
 
-env:
-  AWS_REGION: us-east-1
-  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  AWS_ELASTIC_BEANSTALK_APPLICATION_NAME: springboot-elasticbeanstalkv2-deploy
-  AWS_ELASTIC_BEANSTALK_ENVIRONMENT_NAME: springboot-elasticbeanstalkv2-deploy-env
-  AWS_ELASTIC_BEANSTALK_S3_BUCKET: springboot-elasticbeanstalkv2
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -41,7 +33,7 @@ jobs:
 
       - name: Create Elastic Beanstalk Application
         run: |
-          eb init -p "Java 11" ${{ env.AWS_ELASTIC_BEANSTALK_APPLICATION_NAME }} --region ${{ env.AWS_REGION }}
+          eb init -p "Corretto 8" -i "64bit Amazon Linux 2 v3.4.7" ${{ env.AWS_ELASTIC_BEANSTALK_APPLICATION_NAME }} --region ${{ env.AWS_REGION }}
           eb create ${{ env.AWS_ELASTIC_BEANSTALK_ENVIRONMENT_NAME }} --single --region ${{ env.AWS_REGION }}
 
       - name: Deploy to Elastic Beanstalk
